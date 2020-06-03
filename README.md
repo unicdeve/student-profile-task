@@ -1,5 +1,13 @@
 ## Available Scripts
 
+You can clone this repo by running:
+
+### `git clone git@github.com:uniqueomokenny/student-profile-task.git`
+
+Please, run the following to install project dependencies
+
+### `yarn`
+
 In the project directory, you can run:
 
 ### `yarn start`
