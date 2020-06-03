@@ -1,13 +1,22 @@
-import React from 'react';
-import { StyledProfile, ProfileDetailsWrapper } from './profile-card.styled';
+import React, { useState } from 'react';
+
+import plus_icon from '../../assets/icons/plus.svg';
+import minus_icon from '../../assets/icons/minus.svg';
+
+import {
+	StyledProfile,
+	ProfileDetailsWrapper,
+	GradesWrapper,
+	Icon,
+} from './profile-card.styled';
 
 export default function ProfileCard({ student }) {
-	console.log(student);
-
 	const { pic, firstName, lastName, email, company, skill, grades } = student;
 
 	const average =
 		grades.reduce((a, b) => parseFloat(a) + parseFloat(b)) / grades.length;
+
+	const [open, setOpen] = useState(false);
 
 	return (
 		<StyledProfile>
@@ -35,6 +44,24 @@ export default function ProfileCard({ student }) {
 						<div className='item'>
 							Average: <span>{average}</span>
 						</div>
+
+						{open && (
+							<GradesWrapper>
+								{grades &&
+									grades.map((grade, i) => (
+										<div className='item'>
+											Test {i + 1}: <span>{grade}</span>
+										</div>
+									))}
+							</GradesWrapper>
+						)}
+					</div>
+
+					<div className='icon-wrapper'>
+						<Icon
+							icon={open ? minus_icon : plus_icon}
+							onClick={() => setOpen(!open)}
+						/>
 					</div>
 				</ProfileDetailsWrapper>
 			</div>

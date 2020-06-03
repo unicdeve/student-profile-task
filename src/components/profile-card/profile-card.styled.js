@@ -5,7 +5,6 @@ export const StyledProfile = styled.div`
 
 	.profile-container {
 		display: flex;
-		align-items: center;
 		padding: 10px;
 
 		.img-wrapper img {
@@ -21,6 +20,7 @@ export const StyledProfile = styled.div`
 export const ProfileDetailsWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
+	width: 100%;
 
 	.details {
 		margin-left: 2rem;
@@ -38,4 +38,18 @@ export const ProfileDetailsWrapper = styled.div`
 			font-weight: 500;
 		}
 	}
+`;
+
+export const Icon = styled.div`
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	background: url(${({ icon }) => icon});
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	transition: all 0.4s;
+`;
+
+export const GradesWrapper = styled.div`
+	margin-top: 1.5rem;
 `;
