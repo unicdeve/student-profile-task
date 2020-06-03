@@ -2,12 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import ProfileCard from '../profile-card/profile-card.comp';
 
-import {
-	StyledApp,
-	ContentsWrapper,
-	InputsContainer,
-	ProfileWrapper,
-} from './app.styled';
+import { StyledApp, ContentsWrapper, ProfileWrapper } from './app.styled';
+import CustomInput from '../custom-unput/custom-input.comp';
 
 function App() {
 	const [loading, setLoading] = useState(false);
@@ -31,11 +27,10 @@ function App() {
 		<StyledApp>
 			<div className='container'>
 				<ContentsWrapper>
-					<InputsContainer>
-						<div className='input-wrapper'>
-							<input type='text' placeholder='Search by name' />
-						</div>
-					</InputsContainer>
+					<div className='inputs-container'>
+						<CustomInput placeholder='Search by name' />
+						<CustomInput placeholder='Search by tags' />
+					</div>
 
 					<ProfileWrapper>
 						{students &&

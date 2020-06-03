@@ -8,7 +8,9 @@ import {
 	ProfileDetailsWrapper,
 	GradesWrapper,
 	Icon,
+	TagItem,
 } from './profile-card.styled';
+import CustomInput from '../custom-unput/custom-input.comp';
 
 export default function ProfileCard({ student }) {
 	const { pic, firstName, lastName, email, company, skill, grades } = student;
@@ -17,6 +19,15 @@ export default function ProfileCard({ student }) {
 		grades.reduce((a, b) => parseFloat(a) + parseFloat(b)) / grades.length;
 
 	const [open, setOpen] = useState(false);
+	const [tag, setTag] = useState('');
+	const [tags, setTags] = useState([]);
+
+	const onEnterPress = (e) => {
+		if (e.key === 'Enter') {
+			setTags([...tags, tag]);
+			setTag('');
+		}
+	};
 
 	return (
 		<StyledProfile>
@@ -49,10 +60,23 @@ export default function ProfileCard({ student }) {
 							<GradesWrapper>
 								{grades &&
 									grades.map((grade, i) => (
-										<div className='item'>
+										<div key={i} className='item'>
 											Test {i + 1}: <span>{grade}</span>
 										</div>
 									))}
+
+								<div className='tags-wrapper'>
+									{tags &&
+										tags.map((tag, i) => <TagItem key={i}>{tag}</TagItem>)}
+								</div>
+
+								<CustomInput
+									placeholder='Add a tag'
+									sm
+									value={tag}
+									onChange={(e) => setTag(e.target.value)}
+									onEnterPress={onEnterPress}
+								/>
 							</GradesWrapper>
 						)}
 					</div>

@@ -52,4 +52,16 @@ export const Icon = styled.div`
 
 export const GradesWrapper = styled.div`
 	margin-top: 1.5rem;
+
+	.tags-wrapper {
+		margin-top: 1.5rem;
+	}
+`;
+
+export const TagItem = styled.span`
+	color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.2);
+	padding: 5px 10px;
+	margin-right: 0.5rem;
+	border-radius: 5px;
 `;

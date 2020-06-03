@@ -32,28 +32,10 @@ export const StyledApp = styled.div`
 export const ContentsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-`;
 
-export const InputsContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-
-	.input-wrapper {
-		padding: 10px;
+	.inputs-container {
 		display: flex;
-		justify-content: center;
-
-		input {
-			width: 100%;
-			font-size: 20px;
-			padding: 10px;
-			border: none;
-			border-bottom: 1px solid #ccc;
-
-			&:focus {
-				outline: none;
-			}
-		}
+		flex-direction: column;
 	}
 `;
 
