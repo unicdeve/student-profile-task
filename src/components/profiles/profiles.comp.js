@@ -7,14 +7,15 @@ export default function Profiles({
 	searchedStudents,
 	setStudentTag,
 	tag,
+	name,
 }) {
 	const [myStudents, setMyStudents] = useState(students);
 
 	useEffect(() => {
-		if (tag !== '') {
+		if (tag !== '' || name !== '') {
 			setMyStudents(searchedStudents);
 		} else setMyStudents(students);
-	}, [tag, searchedStudents, students]);
+	}, [tag, name, searchedStudents, students]);
 
 	return (
 		<div>

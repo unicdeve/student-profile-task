@@ -43,26 +43,35 @@ function App() {
 		} else setStudents(getStudents());
 	}, [fetchStudents]);
 
-	const searchByName = () => {};
+	const filterStudents = (tag, name) => {
+		let allStudents = students;
 
-	const searchByTag = (tag) => {
-		const allStudents = students.filter((s) => {
-			const tags = s.tags.join(',');
-			return tags.includes(tag);
-		});
+		tag !== '' &&
+			(allStudents = students.filter((s) => {
+				const tags = s.tags.join(',');
+				return tags.includes(tag);
+			}));
+
+		name !== '' &&
+			(allStudents = allStudents.filter((s) => {
+				const names = `${s.firstName} ${s.lastName}`.toLowerCase();
+
+				return names.includes(name.toLowerCase());
+			}));
 
 		setSearchedStudents(allStudents);
-		if (tag === '') {
-			if (localStorage.students) {
-				setStudents(getStudents());
-			}
-		}
 	};
 
 	const onTagChange = (e) => {
 		const tag = e.target.value;
 		setTag(tag);
-		searchByTag(tag);
+		filterStudents(tag, name);
+	};
+
+	const onNameChange = (e) => {
+		const name = e.target.value;
+		setName(name);
+		filterStudents(tag, name);
 	};
 
 	const setStudentTag = (tag, studentId) => {
@@ -87,9 +96,9 @@ function App() {
 						<CustomInput
 							placeholder='Search by name'
 							value={name}
-							onChange={(e) => setName(e.target.value)}
-							onEnterPress={searchByName}
+							onChange={onNameChange}
 						/>
+
 						<CustomInput
 							placeholder='Search by tags'
 							value={tag}
@@ -104,6 +113,7 @@ function App() {
 								searchedStudents={searchedStudents}
 								setStudentTag={setStudentTag}
 								tag={tag}
+								name={name}
 							/>
 						)}
 					</ProfileWrapper>
