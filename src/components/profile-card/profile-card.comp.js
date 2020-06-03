@@ -12,19 +12,28 @@ import {
 } from './profile-card.styled';
 import CustomInput from '../custom-unput/custom-input.comp';
 
-export default function ProfileCard({ student }) {
-	const { pic, firstName, lastName, email, company, skill, grades } = student;
+export default function ProfileCard({ student, setStudentTag }) {
+	const {
+		id,
+		pic,
+		firstName,
+		lastName,
+		email,
+		company,
+		skill,
+		grades,
+		tags,
+	} = student;
 
 	const average =
 		grades.reduce((a, b) => parseFloat(a) + parseFloat(b)) / grades.length;
 
 	const [open, setOpen] = useState(false);
 	const [tag, setTag] = useState('');
-	const [tags, setTags] = useState([]);
 
 	const onEnterPress = (e) => {
 		if (e.key === 'Enter') {
-			setTags([...tags, tag]);
+			setStudentTag(tag, id);
 			setTag('');
 		}
 	};
